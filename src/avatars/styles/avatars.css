@@ -13,7 +13,7 @@ body {
   background-color: #ffffff;
   padding: 100px;
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template: auto / repeat(4, auto);
   gap: 20px;
   justify-content: center;
   align-items: center;

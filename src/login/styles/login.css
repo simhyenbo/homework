@@ -1,0 +1,204 @@
+:root {
+  --base-font-size: 16px;
+  --base-text-color: #121212;
+  --focus-color: #24388d;
+  --input-border-color: #dadada;
+  --input-focus-border-color: #03cf5d;
+  --input-focus-bg-color: #e9f0fd;
+  --naver-green: #03cf5d;
+  --input-height: 45px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+body {
+  font-size: var(--base-font-size);
+  color: var(--base-text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.logo {
+  width: 14.375rem; /* 230px */
+  margin: 0 auto 2rem;
+}
+
+.login-container {
+  width: 100%;
+}
+
+.login-form {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 0.5rem;
+
+  label {
+    display: block;
+    font-size: var(--base-font-size);
+  }
+
+  input {
+    width: 100%;
+    height: var(--input-height);
+    border: 1px solid var(--input-border-color);
+    padding: 0 0.75rem;
+    font-size: 0.875rem; /* 14px */
+    background-color: #fff;
+
+    &:focus {
+      outline: none;
+      border-color: var(--input-focus-border-color);
+      background-color: var(--input-focus-bg-color);
+    }
+  }
+  .help-text {
+    display: none;
+    font-size: 0.75rem;
+    color: red;
+    margin: 4px 0 8px;
+  }
+
+  input:focus + .help-text {
+    display: block;
+  }
+}
+
+.login-button {
+  width: 100%;
+  height: var(--input-height);
+  background-color: var(--naver-green);
+  color: #fff;
+  border: none;
+  font-size: 1rem; /* 16px */
+  cursor: pointer;
+  margin-top: 1.25rem; /* 20px */
+}
+
+.login-options {
+  margin-top: 0.625rem; /* 10px */
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.custom-checkbox {
+  position: relative;
+  padding-left: 1.8125rem; /* 29px = 24px + 5px */
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.875rem; /* 14px */
+
+  .checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 1.5rem; /* 24px */
+    width: 1.5rem; /* 24px */
+    background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.9764 23.4985C18.3541 23.4985 23.5242 18.3284 23.5242 11.9507C23.5242 5.57305 18.3541 0.402931 11.9764 0.402931C5.59877 0.402931 0.42865 5.57305 0.42865 11.9507C0.42865 18.3284 5.59877 23.4985 11.9764 23.4985Z" fill="white"/><path d="M12.0021 24.0043C9.62833 24.0043 7.30784 23.3004 5.3341 21.9815C3.36036 20.6627 1.82201 18.7883 0.913599 16.5952C0.00518517 14.402 -0.232497 11.9888 0.230608 9.66063C0.693713 7.33244 1.83681 5.19387 3.51534 3.51534C5.19387 1.83681 7.33244 0.693713 9.66063 0.230608C11.9888 -0.232497 14.402 0.00518517 16.5952 0.913599C18.7883 1.82201 20.6627 3.36036 21.9815 5.3341C23.3004 7.30784 24.0043 9.62833 24.0043 12.0021C24.0043 15.1853 22.7398 18.2381 20.4889 20.4889C18.2381 22.7398 15.1853 24.0043 12.0021 24.0043ZM12.0021 1.28593C9.88267 1.28593 7.8108 1.91443 6.04853 3.09194C4.28626 4.26945 2.91274 5.94309 2.10166 7.90122C1.29057 9.85935 1.07836 12.014 1.49184 14.0928C1.90533 16.1715 2.92595 18.0809 4.42464 19.5796C5.92332 21.0783 7.83277 22.0989 9.91151 22.5124C11.9902 22.9259 14.1449 22.7137 16.103 21.9026C18.0612 21.0915 19.7348 19.718 20.9123 17.9557C22.0898 16.1935 22.7183 14.1216 22.7183 12.0021C22.7183 9.16002 21.5893 6.43431 19.5796 4.42464C17.57 2.41496 14.8442 1.28593 12.0021 1.28593Z" fill="%23999999"/></svg>');
+    background-size: contain;
+    margin-right: 0.3125rem; /* 5px */
+  }
+
+  input {
+    /*기본 체크 박스 숨기기기*/
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  /* 체크박스가 체크되었을 때 ~ .chevkmark*/
+  input:checked ~ .checkmark {
+    background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="%2303cf5d"/><path d="M7 12L10.5 15.5L17.5 8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  }
+
+  /* 체크박스가 포커스를 받을 때 ~.chevkmark*/
+  input:focus ~ .checkmark {
+    outline: 2px solid var(--focus-color);
+    outline-offset: 2px;
+  }
+}
+
+.ip-security {
+  display: none; /* Hidden on mobile */
+  font-size: 1rem; /* 16px */
+  color: var(--base-text-color);
+
+  a {
+    text-decoration: none;
+    color: var(--base-text-color);
+  }
+
+  a:focus {
+    outline: 2px solid var(--focus-color);
+    outline-offset: 2px;
+  }
+}
+
+.switch {
+  /* 기존 체크박스 숨기기 */
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  input:checked ~ .switch-text::after {
+    content: 'ON';
+    color: var(--naver-green);
+  }
+
+  input:not(:checked) ~ .switch-text::after {
+    content: 'OFF';
+    color: #898989;
+  }
+
+  /* 체크박스가 포커스를 받을 때 ~.chevkmark*/
+  input:focus ~ .switch-text {
+    outline: 2px solid var(--focus-color);
+    outline-offset: 2px;
+  }
+}
+
+/* 반응형 - 768px 이상  */
+@media (min-width: 768px) {
+  .login-form {
+    max-width: 31.25rem; /* 500px */
+  }
+
+  .login-options {
+    justify-content: space-between;
+  }
+
+  .ip-security {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+}
